@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ApiTesting.Data;
 using ApiTesting.Data.Data.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace ApiTesting.Controllers
 {
@@ -13,10 +14,13 @@ namespace ApiTesting.Controllers
     public class GameKeysController : ControllerBase
     {
         public ApplicationDbContext db;
+        private readonly ILogger<GameKeysController> logger;
 
-        public GameKeysController(ApplicationDbContext db)
+        public GameKeysController(ApplicationDbContext db, ILogger<GameKeysController> logger)
         {
+            
             this.db = db;
+            this.logger = logger;
         }
         // GET: api/<ValuesController>
         [HttpGet]
